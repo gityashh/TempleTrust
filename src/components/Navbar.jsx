@@ -2,7 +2,7 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div className='w-full fixed z-[999] px-20 py-6 flex justify-between items-center backdrop-blur-[5px]' >
+    <div className='w-full fixed z-[999] px-20 py-6 flex justify-between items-center backdrop-blur-[5px] text-white' >
         <div className="logo">
             <h3 className='font-rejouice text-3xl'>templetrust</h3>
         </div>
