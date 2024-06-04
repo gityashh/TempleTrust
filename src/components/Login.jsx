@@ -3,19 +3,23 @@ import axios from "axios"
 import { useNavigate,Link } from "react-router-dom"
 
 function Login() {
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const page = useNavigate();
 
-    async function submit(e){
+    async function submit(e) {
         e.preventDefault();
-
         try {
-            await axios.post('https://localhost:4000/login',{
-                email,password
-            })
-
+            const response = await axios.post('http://localhost:3000/login', {email,password},{
+                withCredentials: true
+              });
+            if (response.data === "login") {
+                page('/');
+            } else {
+                alert('email password did not match');
+            }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 

@@ -6,15 +6,17 @@ import './index.css'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Admin from './components/Admin.jsx'
+import Test from './components/Test.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
   {
-  path:'/',
-  element: <Login/>
+    path: '/',
+    element: <ProtectedRoute><App /></ProtectedRoute>, // Protecting the root path
   },
   {
-    path:'/home',
-    element: <App/>
+  path:'/login',
+  element: <Login/>
   },
   {
     path:'/signup',
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   {
     path:'/adminsign',
     element: <Admin/>
+  },
+  {
+    path:'/test',
+    element: <Test/>
   },
   ]);
 
