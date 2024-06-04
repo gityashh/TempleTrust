@@ -8,7 +8,7 @@ function Navbar() {
         </div>
         <div className="links flex gap-10">
             {["About Us","Dashboard","Contact Us"].map((item,index)=>(
-                <a className={`text-lg font-thin capitalize ${index === 2 && "ml-60"}`} key={index} href="">{item}</a>
+                <a className={`text-lg font-thin capitalize ${index === 2 && "ml-60"}`} key={index} href={`${index == 1 && "/dash"}`}>{item}</a>
             ))}
         </div>
     </div>

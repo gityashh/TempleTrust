@@ -11,8 +11,6 @@ function Page2() {
             </div>
             <div className="causeContainer">
                 <Cause/>
-                <Cause/>
-                <Cause/>
             </div>
         </div>
     )
