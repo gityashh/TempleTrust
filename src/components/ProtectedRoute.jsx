@@ -1,50 +1,13 @@
-// // ProtectedRoute.jsx
-// import React, { useEffect, useState } from 'react';
-// import { Navigate } from 'react-router-dom';
-// import axios from 'axios';
 
-// const ProtectedRoute = ({ children }) => {
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-//   useEffect(() => {
-//     const checkAuth = async () => {
-//       try {
-//         const response = await axios.get('http://localhost:3000/', {
-//             withCredentials: true
-//         });
-//         console.log(response.data);
-//         // if(response.data === "login") {
-//         //     setIsAuthenticated(true);
-//         // }
-//         setIsAuthenticated(true);
-//         console.log(isAuthenticated);
-//       } catch (error) {
-//         // setIsAuthenticated(false);
-//         console.log(error);
-//       }
-//     };
-//     checkAuth();
-//   }, []);
-
-//   console.log('isAuthenticated state:', isAuthenticated);
-
-// //   if (isAuthenticated === null) {
-// //     return <Navigate to="/login" /> // or a loading spinner
-// //   }
-
-//   return isAuthenticated ? children : <Navigate to="/login" />;
-// };
-
-// export default ProtectedRoute;
-
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from '../UserContext'; 
 
 const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null); // Start with null to indicate loading state
-
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const { setUser } = useContext(UserContext);
+  
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -52,7 +15,8 @@ const ProtectedRoute = ({ children }) => {
         const response = await axios.get('http://localhost:3000/', {
           withCredentials: true
         });
-        if(response.data === "login") {
+        if(response.data) {
+            setUser(response.data.user);
             setIsAuthenticated(true);
         }
         else{
@@ -64,7 +28,7 @@ const ProtectedRoute = ({ children }) => {
       }
     };
     checkAuth();
-  }, []);
+  }, [setUser]);
 
 
   if (isAuthenticated === null) {
