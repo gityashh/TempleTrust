@@ -16,6 +16,7 @@ const ProtectedRoute = ({ children }) => {
           withCredentials: true
         });
         if(response.data) {
+            console.log(response.data);
             setUser(response.data.user);
             setIsAuthenticated(true);
         }

@@ -3,11 +3,8 @@ import { IoIosArrowRoundUp } from 'react-icons/io'
 
 function Spend() {
     return (
-        <div className='h-screen w-full bg-zinc-900 px-20 py-10 text-white'>
+        <div className='bg-zinc-900 px-20 py-10 text-white'>
             <div className='flex gap-10 mb-10'>
-            <a href="/dash" className='h-10 w-10'>
-                <span className='text-6xl inline-block -rotate-[90deg]'><IoIosArrowRoundUp/></span>
-            </a>
             <h1 className='text-5xl font-neue mt-2 '>Spend</h1>
             </div>
             <form action="" className='flex flex-col gap-4 w-[800px] items-start'>

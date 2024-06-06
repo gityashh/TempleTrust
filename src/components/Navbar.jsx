@@ -1,6 +1,8 @@
 import React from 'react'
 import { useContext } from 'react';
 import { UserContext } from '../UserContext';
+import Logout from './Logout';
+
 
 function Navbar() {
   const { user } = useContext(UserContext);
@@ -10,7 +12,7 @@ function Navbar() {
             <h3 className='font-rejouice text-3xl'>templetrust</h3>
         </div>
         <div className="links flex gap-10">
-            {["About Us","Dashboard",`${user.email}`].map((item,index)=>(
+            {["About Us","Dashboard",`${user.email}`,<Logout/>].map((item,index)=>(
                 <a className={`text-lg font-thin capitalize ${index === 2 && "ml-60"}`} key={index} href={`${index == 1 && "/dash"}`}>{item}</a>
             ))}
         </div>
